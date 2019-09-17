@@ -1,28 +1,37 @@
-#include "Question.hpp"
+#include "Question.h"
 
-Question::Question()
+Question::Question(std::string someQuestionText, std::vector<std::string> someAnswers, int theRightAnswerIndex)
 {
+	questionText = someQuestionText;
+	answers = someAnswers;
+	rightAnswerIndex = theRightAnswerIndex;
 }
 
 Question::~Question()
 {
 }
 
-void Question::SetRightAnswer(std::string anAnwser)
+void Question::AddAnswer(std::string anAnswer)
 {
+	answers.push_back(anAnswer);
 }
 
-std::string Question::GetRightAnswer()
+void Question::SetRightAnswer(int theRightAnswerIndex)
 {
-	return rightAnswer;
+	rightAnswerIndex = theRightAnswerIndex;
 }
 
-std::list<std::string> Question::GetWrongAnswers()
+int Question::GetRightAnswer()
 {
-	return wrongAnswers;
+	return rightAnswerIndex;
 }
 
-void Question::AddWrongAnswer(std::string aWrongAnswer)
+std::vector<std::string> Question::GetAnswers()
 {
-	wrongAnswers.push_back(aWrongAnswer);
+	return answers;
+}
+
+std::string Question::GetQuestionText()
+{
+	return questionText;
 }

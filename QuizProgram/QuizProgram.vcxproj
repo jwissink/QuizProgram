@@ -155,7 +155,7 @@
     <ClCompile Include="QuizProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Question.hpp" />
+    <ClInclude Include="Question.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

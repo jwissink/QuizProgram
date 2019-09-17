@@ -5,14 +5,40 @@
 #include <string>
 #include <list>
 
-#include "Question.hpp"
+#include "Question.h"
 
 int main()
 {
+	std::vector<Question*> questions;
+	Question* myQ = new Question("Wat is de vraag", { "antwoord0", "antwoord1", "antwoord2" }, 1);
+	Question anotherQ("Tweede vraag", { "antwoord0", "antwoord1", "antwoord2" }, 0);
+	Question myThirdQ("Als", { "Het", "antwoord", "deze", "is", "dan", "moet", "je", "dat", "kiezen" }, 4);
 	
-
-
+	questions.push_back(myQ);
+	questions.push_back(&anotherQ);
+	questions.push_back(&myThirdQ);
 	
+	std::cout << "De super mega Quiz" << std::endl;
+	
+	while (true) {
+		for (Question* q : questions) {
+			std::cout << q->GetQuestionText() << "\n";
+
+			for (int i = 0; i < q->GetAnswers().size(); i++) {
+				std::cout << i << ": " << q->GetAnswers().at(i) << std::endl;
+			}
+			std::cout << "\n" << ": ";
+			std::string input;
+			std::cin >> input;
+			int chosenAnswer = std::stoi(input);
+			if (chosenAnswer == q->GetRightAnswer()) {
+				std::cout << "Correct!" << std::endl;
+			}
+			else {
+				std::cout << "wrong!" << std::endl;
+			}
+		}
+	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
